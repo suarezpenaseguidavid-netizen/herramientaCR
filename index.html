@@ -3,61 +3,44 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#123047">
-<title>VanoMedidor</title>
-<style>
-:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#14212b;background:#f3f6f8}
-*{box-sizing:border-box}body{margin:0}header{background:#123047;color:white;padding:22px 18px}
-header h1{margin:0;font-size:1.55rem}header p{margin:6px 0 0;color:#d4e5ed;font-size:.95rem}
-main{max-width:900px;margin:auto;padding:16px;display:grid;gap:14px}
-.card{background:white;border:1px solid #dbe4e9;border-radius:16px;padding:16px;box-shadow:0 4px 16px #1630470a}
-h2{font-size:1.1rem;margin:0 0 10px}p{line-height:1.45}.hint{font-size:.9rem;color:#52636d}
-button,select,input{font:inherit}button{border:0;border-radius:10px;padding:12px 15px;background:#176b87;color:white;font-weight:650;cursor:pointer}
-button.secondary{background:#e7eff3;color:#123047}button.danger{background:#9d2c32}button:disabled{opacity:.45;cursor:not-allowed}
-.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}label{display:block;font-size:.92rem;font-weight:600;margin:10px 0 5px}
-input,select{width:100%;padding:11px;border:1px solid #bdcbd3;border-radius:9px;background:#fff}
-.field{max-width:360px;flex:1;min-width:150px}
-#cameraWrap{position:relative;background:#0a151c;border-radius:12px;overflow:hidden;min-height:180px;display:grid;place-items:center}
-video{display:block;width:100%;max-height:60vh;object-fit:contain}
-canvas{display:none;width:100%;touch-action:manipulation;cursor:crosshair}
-#cameraPlaceholder{color:#d9e4e9;padding:24px;text-align:center}
-.status{padding:10px 12px;border-radius:9px;background:#eef5f7;color:#244653;font-size:.92rem;margin-top:10px}
-.status.error{background:#fff0ef;color:#8b2727}
-.stat{font-size:1.25rem;font-weight:750;color:#176b87}
-ol{padding-left:22px;line-height:1.55}.measure{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #e7edf0;padding:10px 0}.measure:last-child{border:0}
-small{color:#657680}.hidden{display:none!important}
-footer{max-width:900px;margin:auto;padding:0 16px 28px;color:#5c6c75;font-size:.82rem}
-</style>
+<title>HerramientaCR</title>
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<header><h1>VanoMedidor</h1><p>Mide vanos de ventanas con la cámara de tu celular.</p></header>
+<header class="encabezado">
+  <h1 class="titulo">HerramientaCR</h1>
+</header>
 <main>
-<section class="card">
-<h2>1. Autoriza y abre la cámara</h2>
-<p class="hint">El navegador te pedirá permiso. La cámara solo se activa cuando pulses el botón.</p>
-<div class="controls">
-<button id="startCamera">Permitir cámara</button>
-<button id="stopCamera" class="secondary" disabled>Apagar cámara</button>
-<button id="capture" disabled>Tomar foto</button>
-</div>
-<div id="cameraWrap" style="margin-top:12px">
-<video id="video" autoplay playsinline muted></video>
-<canvas id="photo"></canvas>
-<div id="cameraPlaceholder">La vista de la cámara aparecerá aquí.</div>
-</div>
-<div id="status" class="status" role="status">Listo. Para comenzar, permite el acceso a la cámara.</div>
+<section class="capturaDePantalla">
+  <div class="controlesPermitirApagarCamara">
+    <button id="startCamera" class="botonPermitir">Permitir cámara</button>
+    <button id="stopCamera" class="secondary" disabled>Apagar cámara</button>
+  </div>
+  <div id="cameraWrap" class="marcoCamara">
+    <video id="video" autoplay playsinline muted></video>
+    <canvas id="photo"></canvas>
+    <div id="cameraPlaceholder">
+      <p>Camara</p>
+    </div>
+  </div>
+  <div id="status" class="status" role="status">Listo. Para comenzar, permite el acceso a la cámara.</div>
+  <div class="marcoBoton">
+    <button id="capture" class="capturarFoto"></button>
+  </div>
 </section>
-
 <section class="card">
-<h2>2. Calibra la medida</h2>
-<p>Para convertir los puntos de la foto en centímetros, mide una referencia de longitud conocida que esté <b>en el mismo plano de la ventana</b> (por ejemplo, una regla o cinta métrica).</p>
-<div class="field">
-<label for="knownLength">Longitud real de la referencia (cm)</label>
-<input id="knownLength" type="number" min="0.1" step="0.1" value="10">
-</div>
-<p class="hint">Después de tomar la foto, selecciona dos puntos de esa referencia en la imagen. Luego selecciona los extremos de cada vano.</p>
-<div class="controls"><button id="calibrate" class="secondary" disabled>Calibrar con 2 puntos</button><button id="measureMode" disabled>Medir vano</button></div>
-<div id="scaleStatus" class="status">Escala aún no calibrada.</div>
+  <h2>2. Calibra la medida</h2>
+  <p>Para convertir los puntos de la foto en centímetros, mide una referencia de longitud conocida que esté <b>en el mismo plano de la ventana</b> (por ejemplo, una regla o cinta métrica).</p>
+  <div class="field">
+    <label for="knownLength">Longitud real de la referencia (cm)</label>
+    <input id="knownLength" type="number" min="0.1" step="0.1" value="10">
+  </div>
+  <p class="hint">Después de tomar la foto, selecciona dos puntos de esa referencia en la imagen. Luego selecciona los extremos de cada vano.</p>
+  <div class="controls">
+    <button id="calibrate" class="secondary" disabled>Calibrar con 2 puntos</button>
+    <button id="measureMode" disabled>Medir vano</button>
+  </div>
+  <div id="scaleStatus" class="status">Escala aún no calibrada.</div>
 </section>
 
 <section class="card">
@@ -91,129 +74,6 @@ footer{max-width:900px;margin:auto;padding:0 16px 28px;color:#5c6c75;font-size:.
 </section>
 </main>
 <footer>VanoMedidor · Prototipo web. La imagen se procesa en el navegador y no se envía a un servidor.</footer>
-<script>
-(() => {
-const video = document.querySelector('#video');
-const canvas = document.querySelector('#photo');
-const ctx = canvas.getContext('2d');
-const placeholder = document.querySelector('#cameraPlaceholder');
-const status = document.querySelector('#status');
-const scaleStatus = document.querySelector('#scaleStatus');
-const pending = document.querySelector('#pending');
-const startBtn = document.querySelector('#startCamera');
-const stopBtn = document.querySelector('#stopCamera');
-const captureBtn = document.querySelector('#capture');
-const calibrateBtn = document.querySelector('#calibrate');
-const measureModeBtn = document.querySelector('#measureMode');
-const saveBtn = document.querySelector('#saveMeasure');
-const clearBtn = document.querySelector('#clearPoints');
-const exportBtn = document.querySelector('#export');
-let stream = null, photoTaken = false, mode = 'none', points = [], scale = null, measures = [];
-
-function setStatus(msg, error=false){ status.textContent=msg; status.classList.toggle('error',error); }
-function updateControls(){
- calibrateBtn.disabled=!photoTaken;
- measureModeBtn.disabled=!photoTaken || !scale;
- clearBtn.disabled=points.length===0;
- saveBtn.disabled=!(photoTaken && scale && mode==='measure' && points.length===2);
- exportBtn.disabled=measures.length===0;
-}
-function drawPoints(){
- if(!photoTaken)return;
- ctx.drawImage(window._photoImage,0,0,canvas.width,canvas.height);
- points.forEach((p,i)=>{
-   ctx.beginPath();ctx.arc(p.x,p.y,Math.max(5,canvas.width/180),0,Math.PI*2);
-   ctx.fillStyle=i%2===0?'#ff3b30':'#00c7a5';ctx.fill();
-   ctx.lineWidth=Math.max(2,canvas.width/500);ctx.strokeStyle='white';ctx.stroke();
-   ctx.fillStyle='white';ctx.font=`bold ${Math.max(16,canvas.width/35)}px system-ui`;
-   ctx.fillText(String(i+1),p.x+8,p.y-8);
- });
- if(points.length===2){
-   ctx.beginPath();ctx.moveTo(points[0].x,points[0].y);ctx.lineTo(points[1].x,points[1].y);
-   ctx.strokeStyle='#ffcc00';ctx.lineWidth=Math.max(3,canvas.width/350);ctx.stroke();
- }
-}
-startBtn.addEventListener('click',async()=>{
- if(!navigator.mediaDevices?.getUserMedia){setStatus('Este navegador no permite usar la cámara aquí. Abre la página mediante HTTPS o localhost en un navegador compatible.',true);return;}
- try{
-   stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false});
-   video.srcObject=stream;video.classList.remove('hidden');canvas.style.display='none';placeholder.classList.add('hidden');
-   await video.play();captureBtn.disabled=false;stopBtn.disabled=false;startBtn.disabled=true;
-   setStatus('Cámara activa. Encuadra la ventana y toma una foto.');
- }catch(e){setStatus(e.name==='NotAllowedError'?'Permiso denegado. Autoriza la cámara en los permisos del navegador y vuelve a intentarlo.':'No se pudo abrir la cámara: '+e.message,true);}
-});
-stopBtn.addEventListener('click',()=>{
- if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;video.srcObject=null;
- stopBtn.disabled=true;startBtn.disabled=false;captureBtn.disabled=true;setStatus('Cámara apagada. La foto capturada se conserva.');
-});
-captureBtn.addEventListener('click',()=>{
- if(!video.videoWidth){setStatus('Espera a que la cámara esté lista.',true);return;}
- canvas.width=video.videoWidth;canvas.height=video.videoHeight;
- const img=new Image();img.onload=()=>{window._photoImage=img;photoTaken=true;points=[];scale=null;mode='none';
-   video.classList.add('hidden');canvas.style.display='block';drawPoints();
-   scaleStatus.textContent='Escala aún no calibrada.';setStatus('Foto capturada. Calibra usando dos puntos de una referencia conocida.');updateControls();};
- img.src=video.srcObject ? (()=>{ctx.drawImage(video,0,0,canvas.width,canvas.height);return canvas.toDataURL('image/jpeg',.92)})() : '';
-});
-calibrateBtn.addEventListener('click',()=>{
- if(!photoTaken)return;mode='calibrate';points=[];drawPoints();updateControls();
- pending.textContent='Calibración: toca dos extremos de la referencia conocida.';
- setStatus('Modo calibración activo. Selecciona los dos extremos de la referencia en la foto.');
-});
-measureModeBtn.addEventListener('click',()=>{
- if(!scale)return;mode='measure';points=[];drawPoints();updateControls();
- pending.textContent='Medición: toca los dos extremos del vano.';
- setStatus('Modo medición activo. Selecciona dos extremos del ancho o alto.');
-});
-canvas.addEventListener('click',(e)=>{
- if(!photoTaken || mode==='none')return;
- const r=canvas.getBoundingClientRect();const x=(e.clientX-r.left)*canvas.width/r.width;const y=(e.clientY-r.top)*canvas.height/r.height;
- if(points.length>=2)points=[];
- points.push({x,y});drawPoints();updateControls();
- if(points.length===2){
-   const px=Math.hypot(points[1].x-points[0].x,points[1].y-points[0].y);
-   if(mode==='calibrate'){
-     const known=parseFloat(document.querySelector('#knownLength').value);
-     if(!(known>0)){setStatus('Introduce una longitud de referencia válida.',true);return;}
-     scale=known/px;scaleStatus.textContent=`Escala calibrada: ${scale.toFixed(4)} cm por píxel.`;
-     pending.textContent=`Referencia seleccionada: ${px.toFixed(1)} píxeles.`;
-     mode='none';setStatus('Calibración lista. Ahora pulsa “Medir vano”.');
-   }else{
-     const cm=px*scale;pending.textContent=`Medida seleccionada: ${cm.toFixed(1)} cm (${px.toFixed(1)} píxeles).`;
-     setStatus('Medida calculada. Puedes guardarla o deshacer los puntos.');
-   }
- }
- updateControls();
-});
-saveBtn.addEventListener('click',()=>{
- if(points.length!==2||!scale)return;
- const px=Math.hypot(points[1].x-points[0].x,points[1].y-points[0].y);
- const cm=px*scale;const name=document.querySelector('#measureName').value.trim()||`Medida ${measures.length+1}`;
- measures.push({name,cm,px});renderMeasures();points=[];mode='none';drawPoints();pending.textContent='Medida guardada. Pulsa “Medir vano” para registrar otra.';
- document.querySelector('#measureName').value=`Medida ${measures.length+1}`;updateControls();
-});
-function renderMeasures(){
- const list=document.querySelector('#measureList');list.innerHTML='';
- if(!measures.length){list.innerHTML='<p class="hint">Tus medidas aparecerán aquí.</p>';return;}
- measures.forEach((m,i)=>{const div=document.createElement('div');div.className='measure';
-   const left=document.createElement('div');const strong=document.createElement('b');strong.textContent=m.name;
-   const small=document.createElement('small');small.textContent=`${m.px.toFixed(1)} píxeles`;
-   left.append(strong,document.createElement('br'),small);
-   const right=document.createElement('span');right.className='stat';right.textContent=`${m.cm.toFixed(1)} cm`;
-   div.append(left,right);list.append(div);
- });
-}
-clearBtn.addEventListener('click',()=>{points=[];drawPoints();pending.textContent='Puntos borrados. Selecciona nuevamente.';updateControls();});
-exportBtn.addEventListener('click',()=>{
- const content=['VanoMedidor — Registro de medidas',new Date().toLocaleString('es-CO'),'',...measures.map((m,i)=>`${i+1}. ${m.name}: ${m.cm.toFixed(1)} cm (${m.px.toFixed(1)} px)`),'','Nota: medidas aproximadas; verificar con cinta métrica.'].join('\n');
- const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type:'text/plain;charset=utf-8'}));a.download='medidas-vanos.txt';a.click();URL.revokeObjectURL(a.href);
-});
-document.querySelector('#reset').addEventListener('click',()=>{
- points=[];scale=null;photoTaken=false;mode='none';measures=[];window._photoImage=null;
- canvas.style.display='none';video.classList.remove('hidden');placeholder.classList.remove('hidden');
- scaleStatus.textContent='Escala aún no calibrada.';pending.textContent='Aún no hay puntos seleccionados.';
- renderMeasures();updateControls();setStatus('Reiniciado. Puedes tomar una nueva foto.');
-});
-})();
-</script>
+<script src="js/app.js"></script>
 </body>
 </html>

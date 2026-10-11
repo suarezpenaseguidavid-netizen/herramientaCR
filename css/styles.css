@@ -1,0 +1,181 @@
+/*:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#14212b;background:#f3f6f8}
+*{box-sizing:border-box}body{margin:0}header{background:#123047;color:white;padding:22px 18px}
+*/
+.encabezado{
+    border: 1px solid black;
+    text-align: center;
+    height: 8dvh;
+}
+.titulo{
+    font-size: 2rem;
+}
+
+.capturaDePantalla{
+    border: 1px solid black;
+    height: 89dvh;
+    margin: 1%;
+}
+.marcoBoton{
+    text-align: center;
+}
+.marcoCamara{
+    border: 1px solid black;
+    height: 71dvh;
+    background-color: black;
+}
+.capturarFoto{
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 16%;
+    height: 6dvh;
+    background-color: red;
+}
+.botonPermitir{
+    border-radius: 0;
+    width: 50%;
+}
+/*main{
+    max-width:900px;
+    margin:auto;
+    padding:16px;
+    display:grid;
+    gap:14px;
+}*/
+.card{
+    background:white;
+    border:1px solid #dbe4e9;
+    border-radius:16px;
+    padding:16px;
+    box-shadow:0 4px 16px #1630470a;
+}
+h2{
+    font-size:1.1rem;
+    margin:0 0 10px;
+}
+p{
+    line-height:1.45;
+}
+.hint{
+    font-size:.9rem;
+    color:#52636d;
+}
+button,select,input{
+    font:inherit;
+}
+button{
+    border:0;
+    border-radius:10px;
+    padding:12px 15px;
+    background:#176b87;
+    color:white;
+    font-weight:650;
+    cursor:pointer;
+}
+button.secondary{
+    background:#e7eff3;
+    color:#123047;
+}
+button.danger{
+    background:#9d2c32;
+}
+button:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+.controlesPermitirApagarCamara{
+    display:flex;
+    flex-wrap:wrap;
+   /* gap:8px;align-items:center*/
+}
+label{
+    display:block;
+    font-size:.92rem;
+    font-weight:600;
+    margin:10px 0 5px;
+}
+input,select{
+    width:100%;
+    padding:11px;
+    border:1px solid #bdcbd3;
+    border-radius:9px;
+    background:#fff;
+}
+.field{
+    max-width:360px;
+    flex:1;
+    min-width:150px;
+}
+/*#camaraWarap equivale a .marcoCamara*/
+/*#cameraWrap{
+    position:relative;
+    background:#0a151c;
+    /*border-radius:12px;
+    overflow:hidden;
+    min-height:180px;
+    display:grid;
+    place-items:center
+}*/
+video{
+    display:block;
+    width:100%;
+    max-height:60vh;
+    object-fit:contain;
+}
+canvas{
+    display:none;
+    width:100%;
+    touch-action:manipulation;
+    cursor:crosshair;
+}
+#cameraPlaceholder{
+    color:#d9e4e9;
+    padding:24px;
+    text-align:center;
+}
+.status{
+    padding:10px 12px;
+    border-radius:9px;
+    background:#eef5f7;
+    color:#244653;
+    font-size:.92rem;
+    margin-top:10px
+}
+.status.error{
+    background:#fff0ef;
+    color:#8b2727;
+}
+.stat{
+    font-size:1.25rem;
+    font-weight:750;
+    color:#176b87;
+}
+ol{
+    padding-left:22px;
+    line-height:1.55;
+}
+.measure{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    border-bottom:1px solid #e7edf0;
+    padding:10px 0;
+}
+.measure:last-child{
+    border:0;
+}
+small{
+    color:#657680;
+}
+.hidden{
+    display:none!important;
+}
+footer{
+    max-width:900px;
+    margin:auto;
+    padding:0 16px 28px;
+    color:#5c6c75;
+    font-size:.82rem;
+}
+
+
