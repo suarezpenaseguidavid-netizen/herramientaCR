@@ -1,6 +1,3 @@
-/*:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#14212b;background:#f3f6f8}
-*{box-sizing:border-box}body{margin:0}header{background:#123047;color:white;padding:22px 18px}
-*/
 .encabezado{
     border: 1px solid black;
     text-align: center;
@@ -26,25 +23,22 @@
 .capturarFoto{
     border: 1px solid black;
     border-radius: 50%;
-    width: 16%;
-    height: 6dvh;
+    width: 12%;
+    height: 4dvh;
     background-color: red;
 }
 .botonPermitir{
+    background-color: rgb(62, 136, 62);
+    color: white;
+    height: 6dvh;
     border-radius: 0;
     width: 50%;
 }
-.video{
-    width: 100%;
-    height: 100%;
+.botonApagarCamara{
+    width: 50%;
+    background-color: orangered;
+    color: white;
 }
-/*main{
-    max-width:900px;
-    margin:auto;
-    padding:16px;
-    display:grid;
-    gap:14px;
-}*/
 .card{
     background:white;
     border:1px solid #dbe4e9;
@@ -66,15 +60,6 @@ p{
 button,select,input{
     font:inherit;
 }
-button{
-    border:0;
-    border-radius:10px;
-    padding:12px 15px;
-    background:#176b87;
-    color:white;
-    font-weight:650;
-    cursor:pointer;
-}
 button.secondary{
     background:#e7eff3;
     color:#123047;
@@ -82,23 +67,12 @@ button.secondary{
 button.danger{
     background:#9d2c32;
 }
-button:disabled{
-    opacity:.45;
-    cursor:not-allowed;
-}
 .controlesPermitirApagarCamara{
     display:flex;
     flex-wrap:wrap;
-   /* gap:8px;align-items:center*/
-}
-label{
-    display:block;
-    font-size:.92rem;
-    font-weight:600;
-    margin:10px 0 5px;
 }
 input,select{
-    width:100%;
+    width:95%;
     padding:11px;
     border:1px solid #bdcbd3;
     border-radius:9px;
@@ -109,16 +83,6 @@ input,select{
     flex:1;
     min-width:150px;
 }
-/*#camaraWarap equivale a .marcoCamara*/
-/*#cameraWrap{
-    position:relative;
-    background:#0a151c;
-    /*border-radius:12px;
-    overflow:hidden;
-    min-height:180px;
-    display:grid;
-    place-items:center
-}*/
 video{
     display:block;
     width:100%;

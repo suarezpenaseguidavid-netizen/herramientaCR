@@ -14,16 +14,16 @@
 <section class="capturaDePantalla">
   <div class="controlesPermitirApagarCamara">
     <button id="startCamera" class="botonPermitir">Permitir camara</button>
-    <button id="stopCamera" class="secondary" disabled>Apagar camara</button>
+    <button id="stopCamera" class="botonApagarCamara" disabled>Apagar camara</button>
   </div>
   <div id="cameraWrap" class="marcoCamara">
-    <video id="video" class="video" playsinline muted></video>
-    <canvas id="photo" class="video"></canvas>
+    <video id="video" playsinline muted></video>
+    <canvas id="photo" ></canvas>
     <div id="cameraPlaceholder">
       <p>Camara</p>
     </div>
   </div>
-  <div id="status" class="status" role="status">Listo. Para comenzar, permite el acceso a la cámara.</div>
+  <div id="status" class="status" role="status">Permite el acceso a la cámara.</div>
   <div class="marcoBoton">
     <button id="capture" class="capturarFoto"></button>
   </div>
