@@ -1,7 +1,7 @@
 .encabezado{
     border: 1px solid black;
     text-align: center;
-    height: 8dvh;
+    height: 9dvh;
 }
 .titulo{
     font-size: 2rem;
@@ -9,7 +9,7 @@
 
 .capturaDePantalla{
     border: 1px solid black;
-    height: 89dvh;
+    height: 88dvh;
     margin: 1%;
 }
 .marcoBoton{
@@ -23,9 +23,10 @@
 .capturarFoto{
     border: 1px solid black;
     border-radius: 50%;
-    width: 12%;
-    height: 4dvh;
+    width: 13%;
+    height: 7dvh;
     background-color: red;
+    margin: 3%;
 }
 .botonPermitir{
     background-color: rgb(62, 136, 62);
@@ -86,7 +87,7 @@ input,select{
 video{
     display:block;
     width:100%;
-    max-height:60vh;
+    max-height:70vh;
     object-fit:contain;
 }
 canvas{
